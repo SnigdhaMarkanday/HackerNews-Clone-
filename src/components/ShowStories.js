@@ -2,10 +2,13 @@ import React from 'react';
 import Story from './Story';
 import useDataFetcher from '../hooks/dataFetcher';
 import Loader from './Loader';
+import {useParams} from "react-router-dom";
 
-const ShowStories = (props) => {
-  const { type } = props.match.params;
-  const { isLoading, stories } = useDataFetcher(type);
+const ShowStories = () => {
+
+    let { type } = useParams();
+
+    const { isLoading, stories } = useDataFetcher(type);
 
   return (
     <React.Fragment>

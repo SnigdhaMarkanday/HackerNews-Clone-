@@ -10,16 +10,10 @@ const AppRouter = () => {
       <div className="container">
         <Header />
         <Routes>
-          <Route path="/" render={() => <Navigate to="/top" />} exact={true} />
+          <Route path="/" element={<Navigate to="/top" />} exact={true} />
           <Route
             path="/:type"
-            render={({ match }) => {
-              const { type } = match.params;
-              if (!['top', 'new', 'best'].includes(type)) {
-                return <Navigate to="/" />;
-              }
-              return <ShowStories type={type} />;
-            }}
+            element={<ShowStories />}
           />
           <Route component={PageNotFound} />
         </Routes>
